@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mega Work Searcher</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <script>
+    FileAPI = {
+      jsUrl: 'libs/angular/FileAPI.min.js',
+      flashUrl: 'libs/angular/FileAPI.flash.swf'
+    };
+  </script>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="progress middle hide">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+    </div>
+  </div>
+  <div id="mainContent" class="" style="padding-top:40px">
+    <%= yield %>
+  </div>
+</body>
+</html>

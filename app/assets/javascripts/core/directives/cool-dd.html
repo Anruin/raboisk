@@ -1,0 +1,38 @@
+<input type="hidden" name="{{name}}" ng-value="object.id" />
+<div class="input-group dropdown">
+    <input type="text" ng-model="query" ng-focus="stop($event) || show()" ng-blur="blur($event)" ng-click="stop($event) || show()" class="form-control" />
+    <div class="input-group-btn" dropdown="" is-open="isopen" on-toggle="focus(open, this)">
+        <button type="button" class="btn btn-primary dropdown-toggle">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu" style="max-height:170px; overflow-y:scroll;">
+            <li ng-show="isNotExist() && isForAdd">
+                <a href="" ng-click="toggle()">
+                    Значение добавиться автоматически
+                </a>
+            </li>
+            <li ng-show="!filtredArr.length && !isForAdd && (notFound || !dbCtrl)">
+                <a href="" ng-click="toggle() && exit()">
+                    Значения не найдено
+                </a>
+            </li>
+            <li ng-show="!filtredArr.length && !isForAdd && !notFound && dbCtrl">
+                <a href="" ng-click="toggle() && exit()">
+                    Поиск
+                </a>
+            </li>
+            <li ng-show="!array.length && isForAdd && !query">
+                <a href="" ng-click="toggle()">
+                    Введите значение
+                </a>
+            </li>
+            <li ng-show="isNotExist() && isForAdd && filtredArr.length" class="divider"></li>
+            <li ng-show='filtredArr.length'>
+                <a ng-click="select({})">&nbsp;</a>
+            </li>
+            <li ng-repeat="obj in filtredArr|limitTo:50">
+                <a ng-bind="obj.name" ng-click="select(obj)"></a>
+            </li>
+        </ul>
+    </div>
+</div>

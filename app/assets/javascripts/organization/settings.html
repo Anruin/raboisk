@@ -1,0 +1,21 @@
+<h2>Настройки компании</h2>
+
+<div class="row">
+   <div class="col-md-4">
+      <div class="well well-sm">
+         <div class="list-group">
+          <a ng-repeat="item in settingItems" ng-href="#{{item.location}}"
+          ng-click="setItem(item)" ng-class="{'active': currentItem.$$hashKey == item.$$hashKey}" class="list-group-item">{{item.name}}</a>
+       </div>
+    </div>
+ </div>
+
+ <div class="col-md-7">
+   <div class="panel panel-default">
+     <div class="panel-heading">{{currentItem.name}}</div>
+     <div class="panel-body" ui-view="content">
+
+     </div>
+  </div>
+</div>
+</div>

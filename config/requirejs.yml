@@ -1,0 +1,48 @@
+  paths:
+    jquery: "./libs/jquery/jquery"
+    timeago: "./libs/jquery/jquery.timeago"
+    "jquery-validate": "./libs/jquery/jquery.validate"
+    bootstrap: "./libs/bootstrap"
+    angular: "./libs/angular/angular"
+    "angular-mocks": "./libs/angular/angular-mocks"
+    "file-upload-shim": "./libs/angular/angular-file-upload-shim.min"
+    "file-upload": "./libs/angular/angular-file-upload.min"
+    underscore: "./libs/underscore"
+    sugar: "./libs/sugar.min"
+    "ui-route": "./libs/angular/angular-ui-router.min"
+    "ui-bootstrap": "./libs/angular/ui-bootstrap-tpls.min"
+
+  shim:
+    angular:
+      exports: "angular"
+      deps: ["file-upload-shim"]
+
+    bootstrap:
+      deps: ["jquery"]
+
+    "angular-mocks":
+      deps: ["angular"]
+
+    "ui-route":
+      deps: ["angular"]
+
+    "ui-bootstrap":
+      deps: ["angular"]
+
+    "file-upload":
+      deps: ["angular"]
+
+    "jquery-validate":
+      deps: ["jquery"]
+
+    timeago:
+      deps: ["jquery"]
+
+    underscore:
+      exports: "_"
+
+  deps: [
+    "bootstrap"
+    "file-upload-shim"
+    "file-upload"
+  ]

@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <a ng-href="{{vacancy.url}}" target="_blank" class="modal-title">{{vacancy.name}} - {{vacancy.organization.name}}</a>
+</div>
+<div class="modal-body">
+  <dl class="dl-horizontal">
+    <dt>Зарплата:</dt>
+    <dd ng-bind="vacancy.salary"></dd>
+
+    <dt>Описание:</dt>
+    <dd><pre>{{vacancy.description}}</pre></dd>
+
+    <dt>Требования:</dt>
+    <dd><pre>{{vacancy.requires}}</pre></dd>
+
+    <dt>Условия:</dt>
+    <dd><pre>{{vacancy.conditions}}</dd>
+
+    <!-- <dt>
+      Контакт:
+    </dt>
+    <dd>
+      <address>
+        <div><strong>{{vacancy.company}}</strong></div>
+        <div><strong>{{vacancy.addres.city}}</strong></div>
+        <div>{{vacancy.addres.street}}, {{vacancy.addres.house}}</div>
+        <div>{{vacancy.contact.name}}, <a href="mailto:{{vacancy.contact.email}}">{{vacancy.contact.email}}</a></div>
+        <abbr title="Phone">Phone:</abbr>
+        <div ng-repeat="phone in vacancy.contact.phones">{{phone}}</div>
+      </address>
+    </dd> -->
+  </dl>
+</div>
+<div class="modal-footer">
+  <a class="btn btn-primary" ng-click="ok()" target="_blank" ng-href="{{vacancy.url}}">Перейти на сайт</a>
+  <button class="btn btn-warning" ng-click="$close()">Назад</button>
+</div>

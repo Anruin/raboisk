@@ -1,0 +1,40 @@
+<h2>Поиск по вакансиям</h2>
+<div class="input-group">
+  <input type="text" class="form-control" ng-model="paging.search" placeholder="Динамический поиск по всем значениям" ng-change="getData()" change-timeout="500">
+  <span class="input-group-addon"><span ng-cloak>Найдено {{vacancies.length}} записей</span></span>
+</div>
+<div class="row">
+  <div class="col-md-3 col-xs-12" style="margin-bottom:-20px">
+    <div class="panel panel-default" style="margin-top:20px">
+      <div class="panel-heading"><a href="" ng-click="showFilter=!showFilter">Фильтры</a>
+      </div>
+      <div class="panel-body" ng-if="showFilter">
+        <div class="form-group">
+          <label class="control-label col-md-12 col-xs-12">
+            Город:
+          </label>
+          <div class="col-md-12 col-xs-12">
+            <cool-dd ng-change="getData()" ng-value="filters.city" ng-array='[{name:"Хабаровск",id:"Хабаровск"}, {name:"Москва", id:"Москва"}, {name:"Владивосток", id:"Владивосток"}, {name:"Калининград", id:"Калининград"}]'></cool-dd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9 col-xs-12">
+    <div class="progress" ng-if="" style="margin-top:20px">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+      </div>
+    </div>
+    <div class="bs-callout bs-callout-warning" ng-repeat="vacancy in vacancies" ng-if="!isLoad">
+      <a href="" ng-click="vacancyDetails(vacancy)"><h4>{{vacancy.name}} - {{vacancy.salary}}</h4></a>
+      <p>{{vacancy.requires | words:15}}. {{vacancy.conditions | words:15}}</p>
+      <div>&nbsp;<kbd class="pull-right">{{timeago(vacancy.updated_at)}}</kbd>
+        <mark class="pull-left">{{vacancy.organization.geo.city}}</mark>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<footer>
+  <p>&copy; 2014 – Mega Work Searcher</p>
+</footer>

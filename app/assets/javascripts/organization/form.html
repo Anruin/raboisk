@@ -1,0 +1,86 @@
+<form name="ObjForm" novalidate ng-submit="ok(ObjForm.$invalid)">
+  <div class="form-horizontal">
+    <div class="row">
+      <div class="col-md-8 col-sm-12">
+        <input type="hidden" ng-model="curObj.id">
+        <div class="form-group">
+         <label class="control-label col-md-3">
+           Название*:
+         </label>
+         <div class="col-md-9" ng-class="{'has-error':(submitted || ObjForm.name.$dirty) && ObjForm.name.$error.required}">
+           <input ng-model="curObj.name" name="name" type="text" class="form-control" required />
+           <span ng-if="(submitted || ObjForm.name.$dirty) && ObjForm.name.$error.required" class="field-validation-error">
+             Название должно быть указано
+           </span>
+         </div>
+       </div>
+
+       <div class="form-group">
+         <label class="control-label col-md-3">Ссылка*:</label>
+         <div class="col-md-9" ng-class="{'has-error':(submitted && ObjForm.website.$dirty) && (ObjForm.website.$error.required || ObjForm.website.$error.url)}">
+          <input ng-model="curObj.website" name="website" type="url" class="form-control" http-prefix required />
+          <span ng-if="(submitted && ObjForm.website.$dirty) && ObjForm.website.$error.required" class="field-validation-error">
+            Ссылка должна быть указана
+          </span>
+          <span ng-if="(submitted && ObjForm.email.$dirty) && ObjForm.website.$error.url" class="field-validation-error">
+            Некорректная ссылка
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+       <label class="control-label col-md-3">Email*:</label>
+       <div class="col-md-9" ng-class="{'has-error':(submitted && ObjForm.email.$dirty) && (ObjForm.email.$error.required || ObjForm.email.$error.email)}">
+        <input ng-model="curObj.email" name="email" type="email" class="form-control" required />
+        <span ng-if="(submitted && ObjForm.email.$dirty) && ObjForm.email.$error.required" class="field-validation-error">
+          Email должна быть указана
+        </span>
+        <span ng-if="(submitted && ObjForm.email.$dirty) && ObjForm.email.$error.email" class="field-validation-error">
+          Некорректный email
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+     <label class="control-label col-md-3">Вакансии:</label>
+     <div class="col-md-9">
+       <div class="row" ng-repeat="vacancy in curObj.vacancies_attributes">
+         <div class="col-md-11 col-sm-11 well well-sm">
+         <!-- <input ng-model="vacancy.destroy" name="{{'vacancyName' + $index}}" type="text" class="form-control" required /> -->
+          <div class="form-group">
+           <label class="control-label col-md-3">Название:</label>
+           <div class="col-md-9">
+            <input ng-model="vacancy.name" name="{{'vacancyName' + $index}}" type="text" class="form-control" required />
+          </div>
+        </div>
+        <div class="form-group">
+         <label class="control-label col-md-3">Зарплата:</label>
+         <div class="col-md-9">
+          <input ng-model="vacancy.salary" name="{{'vacancySalary' + $index}}" type="text" class="form-control" required />
+        </div>
+      </div>
+      <div class="form-group">
+       <label class="control-label col-md-3">Описание:</label>
+       <div class="col-md-9">
+         <textarea ng-model="vacancy.description" name="{{'vacancyDescription' + $index}}" class="form-control" rows="3"></textarea>
+       </div>
+     </div>
+   </div>
+
+ </div>
+ <button type="button" class="btn btn-default" ng-click="curObj.vacancies_attributes.push({})">
+  <span class="glyphicon glyphicon-plus"></span> Добавить вакансию
+</button>
+</div>
+    </div><!--
+    <div class="form-group">
+    <label class="control-label col-md-3 col-sm-4">Изображение:</label>
+     <div class="col-md-9  col-sm-8"><cool-upload></cool-upload></div>
+   </div>
+ -->
+</div>
+</div>
+<p>
+  <input class="btn btn-default" type="submit" value="На главную">
+  <input class="btn btn-success" type="submit" value="Создать">
+</p>
+</div>
+</form>

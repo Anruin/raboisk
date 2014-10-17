@@ -1,0 +1,16 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Полное имя</th>
+      <th>Должность</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="employee in employees">
+      <td ng-bind="employee.name"></td>
+      <td ng-bind="employee.post"></td>
+      <td><button type="button" class="btn btn-danger btn-xs">Уволить</button></td>
+    </tr>
+  </tbody>
+</table>
